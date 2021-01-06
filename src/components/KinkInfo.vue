@@ -14,22 +14,22 @@
 
 <script>
 export default {
-  name: "KinkInfo",
+  name: 'KinkInfo',
   props: {
     title: String,
     text: String
   }
-}
+};
 </script>
 
 <style scoped>
-  .kinkinfoBox {
-    margin: 20px;
-    padding: 15px;
-    width: 300px;
-    background-color: #42b983;
-  }
-  p {
-    white-space: pre;
-  }
+.kinkinfoBox {
+  margin: 20px;
+  padding: 15px;
+  width: 300px;
+  background-color: #42b983;
+}
+p {
+  white-space: pre;
+}
 </style>

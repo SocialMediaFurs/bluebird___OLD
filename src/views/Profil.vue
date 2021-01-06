@@ -1,17 +1,15 @@
 <template>
-    <div>
-        <h3>Profil</h3>
-        <Kink title="Test"/>
-    </div>
+  <div>
+    <h3>Profil</h3>
+    <Kink title="Test" />
+  </div>
 </template>
 
 <script>
-import Kink from '../components/Kink.vue'
+import Kink from '../components/Kink.vue';
 export default {
-  components: {Kink},
-}
+  components: { Kink }
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
