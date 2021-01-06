@@ -10,6 +10,8 @@
   "dependencies": {
     "core-js": "^3.8.0",
     "mutationobserver-shim": "^0.3.7",
+    "primeicons": "^4.1.0",
+    "primevue": "^3.1.1",
     "vue": "^3.0.3",
     "vue-router": "^4.0.0-rc.6",
     "vuex": "^4.0.0-rc.2"
