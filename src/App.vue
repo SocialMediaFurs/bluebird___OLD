@@ -30,4 +30,8 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+* {
+  font-family: Roboto,serif;
+  color: black;
+}
 </style>
