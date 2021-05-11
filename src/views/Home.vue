@@ -2,7 +2,7 @@
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <titlepage-item
-      img="test2.jpg"
+      img="test.jpg"
       text="Gebe die einfach wichtigsten Infos über dich Preis."
       title="Einfach Vorstellen"
     />
