@@ -2,6 +2,15 @@
   "name": "wb_nameless",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Akuma"
+  },
+  "contributors": [
+    {
+      "name": "Urastor"
+    }
+  ],
+  "bugs": "https://github.com/Paul25995/wb_nameless/issues",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,7 +21,7 @@
     "mutationobserver-shim": "^0.3.7",
     "primeicons": "^4.1.0",
     "primevue": "^3.1.1",
-    "vue": "^3.0.3",
+    "vue": "^3.0.7",
     "vue-router": "^4.0.0-rc.6",
     "vuex": "^4.0.0-rc.2"
   },

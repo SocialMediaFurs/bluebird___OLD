@@ -1,6 +1,8 @@
-# wb_nameless
+# Project BlueBird
+##Projekt Beschreibung
+Für dieses Projekt entsteht eine Webseite, auf welcher es möglich ist sich in verschiedenen Kategorien vorzustellen und einen Überblick zu bieten.
 
-## Project setup
+## Projekt setup
 
 ```
 npm install
@@ -27,3 +29,13 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+##Plugins
+
+[PrimeVue](https://primefaces.org/primevue/showcase/#/colors)
+
+[Vuex](https://vuex.vuejs.org/)
+
+[VueRouter](https://router.vuejs.org/)
+
+
