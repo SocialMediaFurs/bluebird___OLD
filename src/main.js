@@ -12,6 +12,8 @@ import 'primeicons/primeicons.css';
 
 /* PrimeVue Componenten */
 import Slider from 'primevue/slider';
+import Dialog from 'primevue/dialog';
+import Tooltip from 'primevue/tooltip';
 
 const app = createApp(App);
 app.use(store);
@@ -21,5 +23,8 @@ app.use(router);
 app.use(PrimeVue, { ripple: true });
 
 app.component('Slider', Slider);
+app.component('Dialog', Dialog);
+
+app.directive('tooltip', Tooltip)
 
 app.mount('#app');

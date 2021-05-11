@@ -1,6 +1,6 @@
 <template>
   <div class="infobox">
-    <img :src="dImg" />
+    <img :src="dImg" :alt="title" />
     <div>
       <h3>{{ title }}</h3>
     </div>
@@ -22,7 +22,7 @@ export default {
   },
   data: function () {
     return {
-      dImg: './assets/' + this.img
+      dImg: '../assets/' + this.img
     };
   }
 };

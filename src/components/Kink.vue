@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <div>
-      <h3 style="text-align: left">{{ title }}</h3>
+      <h3 style="text-align: left" @click="display=!display">{{ title }}</h3>
     </div>
     <div style="padding: 0 20px">
       <div>
@@ -20,7 +20,7 @@
         <div style="width: 33%;"></div>
         <div style="width: 33%; text-align: right">Devot</div>
       </div>
-      <div style="margin-top: 20px">
+      <div style="margin-top: 10px">
         <Slider
           v-model="fetish"
           :step="1"
@@ -35,11 +35,6 @@
         <div style="width: 33%; text-align: left">Tabu</div>
         <div style="width: 33%;"></div>
         <div style="width: 33%; text-align: right">Liebe ich</div>
-      </div>
-      <div style="display: flex">
-        <div style="width: 10%; text-align: left"></div>
-        <div style="width: 80%;"><p style="margin: 0; text-align: center">{{ fetishText }}</p></div>
-        <div style="width: 10%; text-align: right"></div>
       </div>
     </div>
   </div>
@@ -56,7 +51,8 @@ export default {
       fetish: 3,
       orientation: 2,
       fetishDis: false,
-      orientationDis: false
+      orientationDis: false,
+      display: false,
     };
   },
   computed: {
