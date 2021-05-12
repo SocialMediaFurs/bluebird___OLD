@@ -31,7 +31,6 @@ export default {
 <style scoped>
 .infobox {
   width: 80%;
-  height: 330px;
   margin: 10px auto;
   padding: 15px;
   border-radius: 20px;
