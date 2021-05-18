@@ -101,7 +101,8 @@ html, body {
   &-mobile {
     padding-bottom: $spacing-8;
     border-bottom: 1px solid $link;
-    width: 100%;
+    width: fit-content;
+    margin: auto;
   }
 
   @media (min-width: $breakpoint-tablet) {
