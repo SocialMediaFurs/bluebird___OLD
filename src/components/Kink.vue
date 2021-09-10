@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <div>
-      <h3 style="text-align: left" @click="display=!display">{{ title }}</h3>
+      <h3 style="text-align: left" @click="display=!display">{{ val.field }}</h3>
     </div>
     <div style="padding: 0 20px">
       <div>
@@ -10,7 +10,7 @@
           :step="1"
           :min="0"
           :max="10"
-          :disabled="orientationDis"
+          :disabled="val.disable"
           class="slider"
           id="orientation"
         />
@@ -22,11 +22,11 @@
       </div>
       <div style="margin-top: 10px">
         <Slider
-          v-model="fetish"
+          v-model="like"
           :step="1"
           :min="0"
           :max="6"
-          :disabled="fetishDis"
+          :disabled="val.disable"
           class="slider"
           id="fetish"
         />
@@ -44,14 +44,12 @@
 export default {
   name: 'Kink',
   props: {
-    title: String,
+    val: Object,
   },
   data: function () {
     return {
-      fetish: 3,
-      orientation: 2,
-      fetishDis: false,
-      orientationDis: false,
+      orientation: this.val.orientation,
+      like: this.val.like,
       display: false,
     };
   },

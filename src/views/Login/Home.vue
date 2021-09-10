@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <Profil></Profil>
     <titlepage-item
       img="test.jpg"
       text="Gebe die einfach wichtigsten Infos über dich Preis."
@@ -16,11 +17,14 @@
 
 <script>
 // @ is an alias to /src
-import TitlepageItem from '../components/TitlepageItem.vue';
+// import HelloWorld from '@/components/Link.vue'
+import TitlepageItem from '../../components/TitlepageItem.vue';
+import Profil from "../../components/General";
 
 export default {
   name: 'Home',
   components: {
+    Profil,
     //  HelloWorld,
     TitlepageItem
   }

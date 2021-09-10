@@ -16,9 +16,11 @@
     </div>
     <span class="nav-mobile">
       <router-link to="/">Home</router-link>
-      <router-link to="/post">Post</router-link>
       <router-link to="/profil">Profil</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link to="/links">Links</router-link>
+      <p>NSFW - Bereich</p>
+      <router-link to="/kink">Fetische</router-link>
+      <button @click="googleLogOut" class="logout" v-if="user">Logout</button>
     </span>
   </div>
   <div class="content">
@@ -27,12 +29,52 @@
   <div class="footer"></div>
 </template>
 
+<script>
+import firebase from "firebase";
+
+export default {
+  data: function () {
+    return {
+    };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.getCurrentUser;
+    },
+  },
+  methods: {
+    googleLogOut() {
+      firebase.auth().signOut().then(() => {
+      }).catch(err => {
+        console.log("fehler beim ausgeloggen: " + err)
+      })
+    }
+  },
+};
+</script>
+
 <style lang="scss">
 @import "assets/variables/variables";
 
 * {
   font-family: Roboto,serif;
-  color: black;
+  color: #333333;
+}
+html, body {
+  background: $secondary;
+  height: 100%;
+}
+h1, h2 {
+  text-align: left;
+  color: white;
+  margin-left: $spacing-40 * 3;
+}
+h1 {
+  font-weight: bold;
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2em;
 }
 
 #background {
@@ -40,16 +82,28 @@
   border-radius: 600px 0 0 0;
   background: darken($brand, 15);
 }
-html, body {
-  background: $secondary;
-  height: 100%;
-}
-
 #app {
   text-align: center;
   color: $accent;
 }
 
+.contentbox {
+  width: 80%;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #547EBD;
+}
+
+.logout {
+  margin-top: 20px;
+  height: 25px;
+  width: 80px;
+  color: $fontLight;
+  background-color: $warn;
+  border: 2px solid darken($warn, 15%);
+  border-radius: 10px;
+}
 .header {
   display: flex;
   flex-direction: row;
@@ -59,7 +113,7 @@ html, body {
     margin: $spacing-8 $spacing-20;
 
     hr {
-      background-color: $link;
+      background-color: $fontLight;
       height: 1.5px;
       border-radius: 1px;
       border: 0;
@@ -70,7 +124,6 @@ html, body {
     margin-right: $spacing-16;
   }
 }
-
 .nav {
   display: flex;
   flex-direction: column;
@@ -85,22 +138,25 @@ html, body {
     box-shadow: 6px 6px 15px 2px $shadow;
   }
 
-  a {
-    color: $link;
+  a, p {
+    color: $fontLight;
     margin: 10px 0;
     border-bottom: 0;
     text-decoration: none;
     text-align: left;
     padding: 6px 19px;
   }
+  p {
+    cursor: default;
+  }
   .router-link-exact-active {
 
-    border-bottom: 2px solid $link;
+    border-bottom: 2px solid $fontLight;
   }
 
   &-mobile {
     padding-bottom: $spacing-8;
-    border-bottom: 1px solid $link;
+    border-bottom: 1px solid $fontLight;
     width: fit-content;
     margin: auto;
   }
@@ -120,27 +176,27 @@ html, body {
     background-color: $brand;
 
     a {
-      color: $link;
+      color: $fontLight;
       margin: 10px 0;
-      border-bottom: 1px solid $link;
+      border-bottom: 1px solid $fontLight;
       text-decoration: none;
       text-align: left;
       padding: 0 0 5px 20px;
     }
 
     .router-link-exact-active {
-      color: $link-active;
-      border-bottom: 1px solid $link-active;
+      color: $fontLight-secondary;
+      border-bottom: 1px solid $fontLight-secondary;
     }
 
     &-mobile {
       border-bottom: 0;
       display: flex;
       flex-direction: column;
+      width: 100%;
     }
   }
 }
-
 .content {
   width: 100%;
 
