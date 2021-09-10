@@ -1,6 +1,5 @@
 <template>
   <div class="infobox">
-    <img :src="dImg" :alt="title" />
     <div>
       <h3>{{ title }}</h3>
     </div>
