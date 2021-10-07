@@ -1,7 +1,7 @@
 <template>
-  <p v-if="user">Eingeloggt mit: <span class="userMail">{{user.email}}</span></p>
+  <p v-if="googleUser">Eingeloggt mit: <span class="userMail">{{googleUser.email}}</span></p>
   <button @click="test">test</button>
-  <div v-if="!user">
+  <div v-if="!googleUser">
     <p>Google Login</p>
     <button @click="googleSignIn" class="google"></button>
   </div>
@@ -9,26 +9,33 @@
     <p>LogOut</p>
     <button @click="googleLogOut" class="logout">Logout</button>
   </div>
-</template>
 
+  <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-onauth="onTelegramAuth(user)" type="application/javascript"></script>'></VueScriptComponent>
+  <VueScriptComponent script='<script type="application/javascript">function onTelegramAuth(user) {alert("Logged in as " + user.first_name + " " + user.last_name + " (" + user.id + (user.username ? ", @" + user.username : "") + ")");}</script>'></VueScriptComponent>
+
+</template>
 <script>
 import firebase from "firebase";
+import VueScriptComponent from 'vue-script-component'
 
 export default {
+  components: {
+    VueScriptComponent
+  },
   data: function () {
     return {
       idToken: null,
     };
   },
   computed: {
-    user() {
+    googleUser() {
       return this.$store.getters.getCurrentUser;
     },
   },
   created() {
-    firebase.auth().onAuthStateChanged(user => {
-      this.$store.commit("setCurrentUser", user || null)
-      this.$router.push('/login/' + user.uid)
+    firebase.auth().onAuthStateChanged(googleUser => {
+      this.$store.commit("setCurrentUser", googleUser || null)
+      this.$router.push('/login/' + googleUser.uid)
     })
   },
   methods: {
