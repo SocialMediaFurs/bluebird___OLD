@@ -24,9 +24,9 @@
       <router-link to="/admin/kinks">Fetischliste</router-link>
       <p>Login</p>
       <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-onauth="onTelegramAuth(user)" type="application/javascript"></script>'></VueScriptComponent>
-      <VueScriptComponent script='<script type="application/javascript"></script>'></VueScriptComponent>
+      <VueScriptComponent script='<script type="application/javascript">function onTelegramAuth(user) {tgUser = user}</script>'></VueScriptComponent>
     </span>
-    {{testUser}}
+    {{tgUser}}
   </div>
   <div class="content">
     <router-view />
@@ -43,7 +43,7 @@ export default {
   },
   data: function () {
     return {
-      testUser: ""
+      tgUser: ""
     };
   },
   computed: {
@@ -51,9 +51,14 @@ export default {
       return this.$store.getters.getCurrentUser;
     },
   },
+  watch: {
+    tgUser: function (newTgUser) {
+      this.telegramAuth(newTgUser);
+    }
+  },
   methods: {
-    onTelegramAuth(user) {
-      this.testUser = user
+    telegramAuth(user) {
+      this.tgUser = user
       this.$store.commit("setCurrentUser", user.username)
       if (user.id === 322709618) {
         this.$store.commit("setIsAdmin", true)
