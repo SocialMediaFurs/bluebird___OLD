@@ -43,7 +43,7 @@ export default {
   },
   data: function () {
     return {
-      tgUser: ""
+      tgUser: "user_profil_nicht_geladen"
     };
   },
   computed: {
