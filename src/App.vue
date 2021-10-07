@@ -35,8 +35,12 @@
 </template>
 
 <script>
+import VueScriptComponent from 'vue-script-component'
 
 export default {
+  components: {
+    VueScriptComponent
+  },
   data: function () {
     return {
       testUser: ""
