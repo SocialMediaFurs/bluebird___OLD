@@ -33,5 +33,6 @@ export default createStore({
   getters: {
     getCurrentUser: state => state.currentUser,
     getCurrentProfil: state => state.currentProfil,
+    getIsAdmin: state => state.isAdmin,
   }
 });

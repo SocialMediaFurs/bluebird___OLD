@@ -20,16 +20,21 @@
       <router-link :to="'/' + user + '/links'">Links</router-link>
       <p>NSFW - Bereich</p>
       <router-link :to="'/' + user + '/kink'">Fetische</router-link>
-      <p>Adminbereich</p>
-      <router-link to="/admin/kinks">Fetischliste</router-link>
+      <span v-if="isAdmin">
+        <p>Adminbereich</p>
+        <router-link to="/admin/kinks">Fetischliste</router-link>
+      </span>
       <p>Login</p>
       <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-auth-url="https://bluebird-projekt.web.app/"></script>'></VueScriptComponent>
     </span>
-    {{tgUser}}
-    {{query}}
   </div>
   <div class="content">
     <router-view />
+    <pre>
+      <code>
+        {{tgUser}}
+      </code>
+    </pre>
   </div>
   <div class="footer"></div>
 </template>
@@ -48,12 +53,14 @@ export default {
         username: "",
         photoURL: ""
       },
-      query: ""
     };
   },
   computed: {
     user() {
       return this.$store.getters.getCurrentUser;
+    },
+    isAdmin() {
+      return this.$store.getters.getIsAdmin;
     },
   },
   watch: {
@@ -63,12 +70,11 @@ export default {
   },
   methods: {
     telegramAuth() {
-      this.query = this.$route.query;
       this.tgUser.id = this.$route.query.id;
       this.tgUser.username = this.$route.query.username;
       this.tgUser.photoURL = this.$route.query.photo_url;
       this.$store.commit("setCurrentUser", this.tgUser)
-      if (this.tgUser.id === 322709618) {
+      if (this.tgUser.id === "322709618") {
         this.$store.commit("setIsAdmin", true)
       }
     }
