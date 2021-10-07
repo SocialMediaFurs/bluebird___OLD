@@ -59,6 +59,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "profile" */ '../views/Login/Home.vue')
+  },
+  {
+    path: '/admin/kinks',
+    name: 'AdminKinks',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "profile" */ '../views/Login/Admin/Kinks.vue')
   }
 ];
 
