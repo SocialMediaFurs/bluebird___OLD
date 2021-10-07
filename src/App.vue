@@ -20,10 +20,13 @@
       <router-link :to="'/' + user + '/links'">Links</router-link>
       <p>NSFW - Bereich</p>
       <router-link :to="'/' + user + '/kink'">Fetische</router-link>
+      <p>Adminbereich</p>
+      <router-link to="/admin/kinks">Fetischliste</router-link>
       <p>Login</p>
-      <router-link to="/login">Zum Login</router-link>
-      <button @click="googleLogOut" class="logout" v-if="user">Logout</button>
+      <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-onauth="onTelegramAuth(user)" type="application/javascript"></script>'></VueScriptComponent>
+      <VueScriptComponent script='<script type="application/javascript"></script>'></VueScriptComponent>
     </span>
+    {{testUser}}
   </div>
   <div class="content">
     <router-view />
@@ -32,11 +35,11 @@
 </template>
 
 <script>
-import firebase from "firebase";
 
 export default {
   data: function () {
     return {
+      testUser: ""
     };
   },
   computed: {
@@ -45,11 +48,19 @@ export default {
     },
   },
   methods: {
-    googleLogOut() {
-      firebase.auth().signOut().then(() => {
-      }).catch(err => {
-        console.log("fehler beim ausgeloggen: " + err)
-      })
+    onTelegramAuth(user) {
+      this.testUser = user
+      this.$store.commit("setCurrentUser", user.username)
+      if (user.id === 322709618) {
+        this.$store.commit("setIsAdmin", true)
+      }
+      alert("Logged in as " +
+        user.first_name + " " +
+        user.last_name + " (" +
+        user.id +
+        (user.username ? ", @" + user.username : "") +
+        ")"
+      );
     }
   },
   created() {

@@ -6,6 +6,7 @@ export default createStore({
   state: {
     currentUser: null,
     currentProfil: null,
+    isAdmin: false,
   },
   mutations: {
     setCurrentUser(state, payload) {
@@ -14,6 +15,9 @@ export default createStore({
     setCurrentProfil(state, payload) {
       state.currentUser = payload;
     },
+    setIsAdmin(state, payload) {
+      state.isAdmin = payload;
+    }
   },
   actions: {
     async setProfil(state) {
