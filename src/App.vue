@@ -24,7 +24,7 @@
       <router-link to="/admin/kinks">Fetischliste</router-link>
       <p>Login</p>
       <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-onauth="onTelegramAuth(user)" type="application/javascript"></script>'></VueScriptComponent>
-      <VueScriptComponent script='<script type="application/javascript">function onTelegramAuth(user) {tgUser = user}</script>'></VueScriptComponent>
+      <VueScriptComponent script='<script type="application/javascript">function onTelegramAuth(user) {this.tgUser = user}</script>'></VueScriptComponent>
     </span>
     {{tgUser}}
   </div>
