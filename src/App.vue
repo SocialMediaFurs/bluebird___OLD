@@ -16,10 +16,10 @@
     </div>
     <span class="nav-mobile">
       <router-link to="/">Home</router-link>
-      <router-link :to="'/' + user + '/profil'">Profil</router-link>
-      <router-link :to="'/' + user + '/links'">Links</router-link>
+      <router-link :to="'/' + user.username + '/profil'">Profil</router-link>
+      <router-link :to="'/' + user.username + '/links'">Links</router-link>
       <p>NSFW - Bereich</p>
-      <router-link :to="'/' + user + '/kink'">Fetische</router-link>
+      <router-link :to="'/' + user.username + '/kink'">Fetische</router-link>
       <span v-if="isAdmin">
         <p>Adminbereich</p>
         <router-link to="/admin/kinks">Fetischliste</router-link>
@@ -70,16 +70,22 @@ export default {
   },
   methods: {
     telegramAuth() {
-      this.tgUser.id = this.$route.query.id;
-      this.tgUser.username = this.$route.query.username;
-      this.tgUser.photoURL = this.$route.query.photo_url;
-      this.$store.commit("setCurrentUser", this.tgUser)
-      if (this.tgUser.id === "322709618") {
-        this.$store.commit("setIsAdmin", true)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams !== null) {
+        this.tgUser.id = urlParams.get("id");
+        this.tgUser.username = urlParams.get("username");
+        this.tgUser.photoURL = urlParams.get("photo_url");
+        this.$store.commit("setCurrentUser", this.tgUser)
+        if (this.tgUser.id === "322709618") {
+          this.$store.commit("setIsAdmin", true)
+        }
       }
     }
   },
   created() {
+    this.telegramAuth()
+  },
+  updated() {
     this.telegramAuth()
   },
 };
