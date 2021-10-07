@@ -26,6 +26,7 @@
       <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-auth-url="https://bluebird-projekt.web.app/"></script>'></VueScriptComponent>
     </span>
     {{tgUser}}
+    {{query}}
   </div>
   <div class="content">
     <router-view />
@@ -46,7 +47,8 @@ export default {
         id: 0,
         username: "",
         photoURL: ""
-      }
+      },
+      query: ""
     };
   },
   computed: {
@@ -61,9 +63,10 @@ export default {
   },
   methods: {
     telegramAuth() {
+      this.query = this.$route.query;
       this.tgUser.id = this.$route.query.id;
-      this.tgUser.username = this.$route.query.username
-      this.tgUser.photoURL = this.$route.query.photo_url
+      this.tgUser.username = this.$route.query.username;
+      this.tgUser.photoURL = this.$route.query.photo_url;
       this.$store.commit("setCurrentUser", this.tgUser)
       if (this.tgUser.id === 322709618) {
         this.$store.commit("setIsAdmin", true)
@@ -72,7 +75,6 @@ export default {
   },
   created() {
     this.telegramAuth()
-    this.$store.commit("setCurrentUser", )
   },
 };
 </script>
