@@ -99,7 +99,7 @@ export default {
   color: #333333;
 }
 html, body {
-  background: $secondary;
+  background: darken($brand, 15);
   height: 100%;
 }
 h1, h2 {
@@ -107,21 +107,19 @@ h1, h2 {
   color: white;
   margin-left: $spacing-40 * 3;
 }
-h1 {
-  font-weight: bold;
-  font-size: 2.5em;
-}
-h2 {
-  font-size: 2em;
-}
 
 #background {
   height: 100%;
   border-radius: 600px 0 0 0;
   background: darken($brand, 15);
 }
+#background-corner {
+  height: 100%;
+  background: $secondary;
+}
 #app {
   text-align: center;
+  padding-left: 20px;
   color: $accent;
 }
 
