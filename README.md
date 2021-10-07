@@ -30,7 +30,7 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-##Plugins
+## Plugins
 
 [PrimeVue](https://primefaces.org/primevue/showcase/#/colors)
 
