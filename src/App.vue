@@ -71,6 +71,7 @@ export default {
     }
   },
   created() {
+    this.telegramAuth()
     this.$store.commit("setCurrentUser", )
   },
 };
