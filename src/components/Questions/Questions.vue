@@ -1,12 +1,12 @@
 <template>
   <div class="content">
     <span class="item" @click="showContent=!showContent">
-      <img src="../assets/Question.svg" alt="Question.svg" height="20" width="20">
-      <h3 class="itemTitle">{{ val.field }}</h3>
-      <img src="../assets/Arrow_Up.svg" alt="Question.svg" height="20" width="20" v-if="!showContent">
-      <img src="../assets/Arrow_Down.svg" alt="Question.svg" height="20" width="20" v-if="showContent">
+      <img src="../../assets/Question.svg" alt="Question.svg" height="20" width="20">
+      <h3 class="itemTitle">{{ question.field }}</h3>
+      <img src="../../assets/Arrow_Up.svg" alt="Question.svg" height="20" width="20" v-if="!showContent">
+      <img src="../../assets/Arrow_Down.svg" alt="Question.svg" height="20" width="20" v-if="showContent">
     </span>
-    <p class="itemValue" v-if="showContent">{{ val.value }}</p>
+    <p class="itemValue" v-if="showContent">{{ question.value }}</p>
     <hr v-if="last">
   </div>
 </template>
@@ -15,7 +15,7 @@
 export default {
   name: 'TitlepageItem',
   props: {
-    val: Object,
+    question: Object,
     last: Boolean,
   },
   data: function () {
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/variables/variables";
+@import "../../assets/variables/variables";
 
 p {
   margin-top: 10px;

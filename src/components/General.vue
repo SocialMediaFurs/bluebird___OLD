@@ -1,6 +1,6 @@
 <template>
   <div class="contentbox">
-    <div v-for="item in obj.general" class="item" :key="item">
+    <div v-for="item in obj" class="item" :key="item">
       <p class="itemTitle">{{ item.field }}:&nbsp;</p>
       <p class="itemValue">{{ item.value }}</p>
     </div>

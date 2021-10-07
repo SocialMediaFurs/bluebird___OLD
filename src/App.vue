@@ -16,10 +16,12 @@
     </div>
     <span class="nav-mobile">
       <router-link to="/">Home</router-link>
-      <router-link to="/profil">Profil</router-link>
-      <router-link to="/links">Links</router-link>
+      <router-link :to="'/' + user + '/profil'">Profil</router-link>
+      <router-link :to="'/' + user + '/links'">Links</router-link>
       <p>NSFW - Bereich</p>
-      <router-link to="/kink">Fetische</router-link>
+      <router-link :to="'/' + user + '/kink'">Fetische</router-link>
+      <p>Login</p>
+      <router-link to="/login">Zum Login</router-link>
       <button @click="googleLogOut" class="logout" v-if="user">Logout</button>
     </span>
   </div>
@@ -49,6 +51,9 @@ export default {
         console.log("fehler beim ausgeloggen: " + err)
       })
     }
+  },
+  created() {
+    this.$store.commit("setCurrentUser", this.$route.params.user)
   },
 };
 </script>
