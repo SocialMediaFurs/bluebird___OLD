@@ -14,12 +14,8 @@
 </template>
 <script>
 import firebase from "firebase";
-import VueScriptComponent from 'vue-script-component'
 
 export default {
-  components: {
-    VueScriptComponent
-  },
   data: function () {
     return {
       idToken: null,
