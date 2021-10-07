@@ -5,6 +5,7 @@ import PrimeVue from 'primevue/config';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import './index.css'
 
 import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
