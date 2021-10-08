@@ -1,11 +1,11 @@
 import { createStore } from 'vuex';
-import router from '@/router'
 import {db} from '@/firebase/firebase'
 
 export default createStore({
   state: {
     currentUser: null,
     currentProfil: null,
+    allKinks: [],
     isAdmin: false,
   },
   mutations: {
@@ -15,16 +15,26 @@ export default createStore({
     setCurrentProfil(state, payload) {
       state.currentUser = payload;
     },
+    setAllKinks(state, payload) {
+      state.allKinks = payload;
+    },
     setIsAdmin(state, payload) {
       state.isAdmin = payload;
     }
   },
   actions: {
     async setProfil(state) {
-      await db.collection('User').doc(router.currentRoute.value.params.user).get().then(snapshot => {
+      await db.collection('User').doc(state.currentProfil).get().then(snapshot => {
         const data = snapshot.data();
         console.log(data)
         state.commit("setCurrentProfil", data)
+      })
+    },
+    async setKinkList(state) {
+      await db.collection('List').doc('kinks').get().then(snapshot => {
+        const data = snapshot.data();
+        console.table(data.allKinks)
+        state.commit("setAllKinks", data.allKinks)
       })
     },
   },
@@ -33,6 +43,7 @@ export default createStore({
   getters: {
     getCurrentUser: state => state.currentUser,
     getCurrentProfil: state => state.currentProfil,
+    getAllKinks: state => state.allKinks,
     getIsAdmin: state => state.isAdmin,
   }
 });
