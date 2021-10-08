@@ -27,6 +27,7 @@
     "primevue": "^3.5.0",
     "sass": "^1.39.0",
     "vue": "^3.0.7",
+    "vue-loader": "^16.8.1",
     "vue-router": "^4.0.0-rc.6",
     "vue-script-component": "^0.1.7",
     "vuefire": "^2.2.5",

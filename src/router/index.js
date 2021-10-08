@@ -1,74 +1,84 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+// Welche Ansicht
+import General from '../views/General';
+import Profil from '../views/Profil'
+//Allgemeine Seiten
+import Home from '../views/General/Home.vue';
+import About from '../views/General/About.vue';
+import Profile from '../views/General/Profile.vue';
+//Profil Seiten
+import Kink from '../views/Profil/Kinks.vue';
+import AboutMe from '../views/Profil/AboutMe';
+import Links from '../views/Profil/Links';
+//Loggedin Seiten
+import HomeLoggedin from '../views/Login/Home.vue';
+//Loggedin - Admin Seiten
+import AdminKinks from '../views/Login/Admin/Kinks.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: General,
+    children: [
+      {
+        path: 'home',
+        components: {
+          general: Home
+        }
+      },
+      {
+        path: 'about',
+        components: {
+          general: About
+        }
+      },
+      {
+        path: 'profile',
+        components: {
+          general: Profile
+        }
+      }
+    ]
   },
+
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/profil',
+    name: 'Profile',
+    component: Profil,
+    children: [
+      {
+        path: ':user/kink',
+        components: {
+          profil: Kink
+        }
+      },
+      {
+        path: ':user/aboutme',
+        components: {
+          profil: AboutMe
+        }
+      },
+      {
+        path: ':user/links',
+        components: {
+          profil: Links
+        }
+      },
+      {
+        path: 'login/:id',
+        components: {
+          profil: HomeLoggedin
+        }
+      },
+      {
+        path: 'admin/kinks',
+        components: {
+          profil: AdminKinks
+        }
+      }
+    ]
   },
-  {
-    path: '/:user/kink',
-    name: 'Kink',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue')
-  },
-  {
-    path: '/:user/profil',
-    name: 'Profil',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Profil.vue')
-  },
-  {
-    path: '/:user/links',
-    name: 'Links',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Links.vue')
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Login.vue')
-  },
-  {
-    path: '/login/:id',
-    name: 'HomeLoggedin',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Login/Home.vue')
-  },
-  {
-    path: '/admin/kinks',
-    name: 'AdminKinks',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "profile" */ '../views/Login/Admin/Kinks.vue')
-  }
 ];
 
 const router = createRouter({

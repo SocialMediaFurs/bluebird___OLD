@@ -1,105 +1,77 @@
 <template>
-  <div class="header">
-    <span>
-      <hr>
-    </span>
-    <div class="menu">
-      <img src="../src/assets/menu.png" alt="Profilbild" width="32" height="32">
-    </div>
-  </div>
-  <div class="profil">
-    <h1>Noataks Profil</h1>
-  </div>
-  <div class="nav">
-    <div>
-      <img src="../src/assets/akuma.jpg" alt="Akuma">
-    </div>
-    <span class="nav-mobile">
-      <router-link to="/">Home</router-link>
-      <router-link :to="'/' + user.username + '/profil'">Profil</router-link>
-      <router-link :to="'/' + user.username + '/links'">Links</router-link>
-      <p>NSFW - Bereich</p>
-      <router-link :to="'/' + user.username + '/kink'">Fetische</router-link>
-      <span v-if="isAdmin">
-        <p>Adminbereich</p>
-        <router-link to="/admin/kinks">Fetischliste</router-link>
-      </span>
-      <p>Login</p>
-      <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-auth-url="https://bluebird-projekt.web.app/"></script>'></VueScriptComponent>
-    </span>
-  </div>
-  <div class="content">
-    <router-view />
-    <pre>
-      <code>
-        {{tgUser}}
-      </code>
-    </pre>
-  </div>
-  <div class="footer"></div>
+  <router-view></router-view>
 </template>
 
-<script>
-import VueScriptComponent from 'vue-script-component'
-
-export default {
-  components: {
-    VueScriptComponent
-  },
-  data: function () {
-    return {
-      tgUser: {
-        id: 0,
-        username: "",
-        photoURL: ""
-      },
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.getCurrentUser;
-    },
-    isAdmin() {
-      return this.$store.getters.getIsAdmin;
-    },
-  },
-  watch: {
-    tgUser: function (newTgUser) {
-      this.telegramAuth(newTgUser);
-    }
-  },
-  methods: {
-    telegramAuth() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams !== null) {
-        this.tgUser.id = urlParams.get("id");
-        this.tgUser.username = urlParams.get("username");
-        this.tgUser.photoURL = urlParams.get("photo_url");
-        this.$store.commit("setCurrentUser", this.tgUser)
-        if (this.tgUser.id === "322709618") {
-          this.$store.commit("setIsAdmin", true)
-        }
-      }
-    }
-  },
-  created() {
-    this.telegramAuth()
-  },
-  updated() {
-    this.telegramAuth()
-  },
-};
-</script>
-
 <style lang="scss">
-@import "assets/variables/variables";
+@import "./assets/variables/variables";
+
+.navbar {
+  width: 100%;
+  height: 0%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: hidden;
+  transition: 0.5s;
+
+  &_open {
+    @extend .navbar;
+    height: 100vh; // <--- 100vh instead of 100%
+  }
+
+  &-content {
+    width: 25%;
+    height: 100vh;
+    text-align: center;
+    float: right;
+    background: darken($brand, 15);
+
+    &-header {
+      background-color: $brand;
+    }
+  }
+
+  a {
+    @apply no-underline text-left px-4 my-0.5 block text-2xl font-light;
+    background-color: $brand;
+    color: $fontLight;
+    transition: 1s;
+
+    i {
+      @apply text-2xl float-right;
+      color: $fontLight;
+    }
+
+    &:hover, &:focus {
+      color: $fontLight-secondary;
+    }
+  }
+
+}
+.navbar-general {
+  @apply flex flex-row-reverse w-full text-right;
+
+  a {
+    color: $fontLight;
+    margin: 10px 0;
+    border-bottom: 0;
+    text-decoration: none;
+    text-align: left;
+    padding: 6px 19px;
+  }
+  .router-link-exact-active {
+    border-bottom: 2px solid $fontLight;
+  }
+}
 
 * {
   font-family: Roboto,serif;
   color: #333333;
 }
 html, body {
-  background: darken($brand, 15);
+  //background: darken($brand, 15);
   height: 100%;
 }
 h1, h2 {
@@ -108,18 +80,19 @@ h1, h2 {
   margin-left: $spacing-40 * 3;
 }
 
+.background-primary {
+  background: darken($brand, 15);
+}
 #background {
   height: 100%;
   border-radius: 600px 0 0 0;
   background: darken($brand, 15);
 }
 #background-corner {
-  height: 100%;
   background: $secondary;
 }
 #app {
   text-align: center;
-  padding-left: 20px;
   color: $accent;
 }
 

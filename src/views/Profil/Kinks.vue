@@ -17,8 +17,8 @@
   </div>
 </template>
 <script>
-import Questions from '../components/Questions/Questions.vue';
-import Kink from '../components/Kink.vue';
+import Questions from '../../components/Questions/Questions.vue';
+import Kink from '../../components/Kink.vue';
 
 export default {
   components: {
