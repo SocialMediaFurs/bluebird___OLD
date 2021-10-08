@@ -68,7 +68,7 @@ export default {
   width: 100px;
   background-color: $secondary;
   border: 0;
-  background-image: url("../assets/Google_Logo.png");
+  background-image: url("../assets/logos/Google_Logo.png");
   background-size: 100px;
   cursor: pointer;
 }

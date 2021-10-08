@@ -1,10 +1,10 @@
 <template>
   <div class="content">
     <span class="item" @click="showContent=!showContent">
-      <img src="../../assets/Question.svg" alt="Question.svg" height="20" width="20">
+      <img src="../../assets/icons/Question.svg" alt="Question.svg" height="20" width="20">
       <h3 class="itemTitle">{{ question.field }}</h3>
-      <img src="../../assets/Arrow_Up.svg" alt="Question.svg" height="20" width="20" v-if="!showContent">
-      <img src="../../assets/Arrow_Down.svg" alt="Question.svg" height="20" width="20" v-if="showContent">
+      <img src="../../assets/icons/Arrow_Up.svg" alt="Question.svg" height="20" width="20" v-if="!showContent">
+      <img src="../../assets/icons/Arrow_Down.svg" alt="Question.svg" height="20" width="20" v-if="showContent">
     </span>
     <p class="itemValue" v-if="showContent">{{ question.value }}</p>
     <hr v-if="last">
