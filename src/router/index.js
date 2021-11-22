@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 // Welche Ansicht
 import General from '../views/General';
-import Profil from '../views/Profil'
+import Profil from '../views/Profil';
 //Allgemeine Seiten
 import Home from '../views/General/Home.vue';
 import About from '../views/General/About.vue';
@@ -18,22 +18,25 @@ import AdminKinks from '../views/Login/Admin/Kinks.vue';
 const routes = [
   {
     path: '/',
-    name: 'Home',
     component: General,
+    redirect: { name: 'Home' },
     children: [
       {
+        name: 'Home',
         path: 'home',
         components: {
           general: Home
         }
       },
       {
+        name: 'About',
         path: 'about',
         components: {
           general: About
         }
       },
       {
+        name: 'Profile',
         path: 'profile',
         components: {
           general: Profile
@@ -41,37 +44,41 @@ const routes = [
       }
     ]
   },
-
   {
     path: '/profil',
-    name: 'Profile',
+    name: 'Profil',
     component: Profil,
     children: [
       {
+        name: 'Kink',
         path: ':user/kink',
         components: {
           profil: Kink
         }
       },
       {
+        name: 'AboutMe',
         path: ':user/aboutme',
         components: {
           profil: AboutMe
-        }
+        },
       },
       {
+        name: 'Links',
         path: ':user/links',
         components: {
           profil: Links
         }
       },
       {
+        name: 'HomeLoggedIn',
         path: 'login/:id',
         components: {
           profil: HomeLoggedin
         }
       },
       {
+        name: 'AdminKinks',
         path: 'admin/kinks',
         components: {
           profil: AdminKinks
@@ -82,8 +89,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  mode: 'history',
+  history: createWebHistory(),
   routes
 });
 

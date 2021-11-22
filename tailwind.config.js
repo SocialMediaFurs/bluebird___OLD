@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       width: {
         'fit': 'fit-content',
+      },
+      zIndex: {
+        '-10': '-10',
       }
     },
   },

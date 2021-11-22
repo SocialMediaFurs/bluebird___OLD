@@ -65,74 +65,6 @@
     border-bottom: 2px solid $fontLight;
   }
 }
-
-* {
-  font-family: Roboto,serif;
-  color: #333333;
-}
-html, body {
-  //background: darken($brand, 15);
-  height: 100%;
-}
-h1, h2 {
-  text-align: left;
-  color: white;
-  margin-left: $spacing-40 * 3;
-}
-
-.background-primary {
-  background: darken($brand, 15);
-}
-#background {
-  height: 100%;
-  border-radius: 600px 0 0 0;
-  background: darken($brand, 15);
-}
-#background-corner {
-  background: $secondary;
-}
-#app {
-  text-align: center;
-  color: $accent;
-}
-
-.contentbox {
-  width: 80%;
-  margin: 10px auto;
-  padding: 15px;
-  border-radius: 20px;
-  background-color: #547EBD;
-}
-
-.logout {
-  margin-top: 20px;
-  height: 25px;
-  width: 80px;
-  color: $fontLight;
-  background-color: $warn;
-  border: 2px solid darken($warn, 15%);
-  border-radius: 10px;
-}
-.header {
-  display: flex;
-  flex-direction: row;
-
-  span {
-    width: calc(100% - 32px);
-    margin: $spacing-8 $spacing-20;
-
-    hr {
-      background-color: $fontLight;
-      height: 1.5px;
-      border-radius: 1px;
-      border: 0;
-    }
-  }
-
-  .menu {
-    margin-right: $spacing-16;
-  }
-}
 .nav {
   display: flex;
   flex-direction: column;
@@ -148,6 +80,7 @@ h1, h2 {
   }
 
   a, p {
+    width: 120px;
     color: $fontLight;
     margin: 10px 0;
     border-bottom: 0;
@@ -166,7 +99,7 @@ h1, h2 {
   &-mobile {
     padding-bottom: $spacing-8;
     border-bottom: 1px solid $fontLight;
-    width: fit-content;
+    width: 100%;
     margin: auto;
   }
 
@@ -204,6 +137,78 @@ h1, h2 {
       flex-direction: column;
       width: 100%;
     }
+  }
+}
+
+* {
+  font-family: Roboto,serif;
+  color: #333333;
+}
+html, body {
+  //background: darken($brand, 15);
+  height: 100%;
+}
+h1, h2 {
+  text-align: left;
+  color: white;
+  margin-left: $spacing-40 * 3;
+}
+img {
+  margin:6px auto 0;
+  height: max-content !important;
+}
+
+.bg-primary {
+  background: darken($brand, 15);
+}
+#background {
+  height: 100%;
+  border-radius: 600px 0 0 0;
+  background: darken($brand, 15);
+}
+#background-corner {
+  background: $secondary;
+}
+#app {
+  text-align: center;
+  color: $accent;
+}
+
+.contentbox {
+  width: 80%;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: #547EBD;
+}
+.logout {
+  margin-top: 20px;
+  height: 25px;
+  width: 80px;
+  color: $fontLight;
+  background-color: $warn;
+  border: 2px solid darken($warn, 15%);
+  border-radius: 10px;
+}
+.header {
+  @apply pt-3;
+  display: flex;
+  flex-direction: row;
+
+  span {
+    width: calc(100% - 32px);
+    margin: $spacing-8 $spacing-20;
+
+    hr {
+      background-color: $fontLight;
+      height: 1.5px;
+      border-radius: 1px;
+      border: 0;
+    }
+  }
+
+  .menu {
+    margin-right: $spacing-16;
   }
 }
 .content {

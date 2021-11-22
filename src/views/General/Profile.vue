@@ -3,8 +3,8 @@
     <h2>Profile</h2>
     <div class="w-11/12">
       <div class="profilBox">
-        <ProfilCard :val="devs.akuma"></ProfilCard>
-        <ProfilCard :val="devs.urastor"></ProfilCard>
+        <ProfilCard :val="devs.akuma" @click="setUser(devs.akuma)"></ProfilCard>
+        <ProfilCard :val="devs.urastor" @click="setUser(devs.urastor)"></ProfilCard>
       </div>
       <div class="flex justify-between">
         <TeaserBlock :teaser="teaser.t1"></TeaserBlock>
@@ -28,13 +28,15 @@ export default {
       devs: {
         akuma: {
           name: 'Akuma',
+          id: 'akuma',
           img: 'akuma.jpg',
-          link: '/akuma/aboutme'
+          link: '/profil/akuma/aboutme'
         },
         urastor: {
           name: 'Urastor',
+          id: 'akuma',
           img: 'urastor.png',
-          link: '/akuma/aboutme'
+          link: '/profil/akuma/aboutme'
         }
       },
       teaser: {
@@ -49,6 +51,11 @@ export default {
       }
     };
   },
+  methods: {
+    setUser(user) {
+      this.$store.commit("setCurrentUser", user.id)
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
