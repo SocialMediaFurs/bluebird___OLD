@@ -46,7 +46,7 @@ export default {
         },
         t2: {
           headline: 'Was passiert mit meinen Daten?',
-          text: 'Deine Daten werden auf Firebase gespeichert. Firebase ist ein Dienst von Google. Solltest du diese Seite irgendwann nicht mehr nutzen wollen, kontaktieren einen Developer und er wird dein Datensatz aus der Datenbank entfernen. Zur Authentifizierung nutzen wir Telegram, dort speichern wir deine TelegramID, deinen Usernamen, sowie die URL für dein Profilbild. Solltest du die Anweisung geben deine Telegramdaten zu löschen, sehen wir uns nach aktuellem Stand gezwungen deinen kompletten Datensatz zu löschen, da wir dich sonst nicht identifizieren können.'
+          text: 'Deine Daten werden auf Firebase gespeichert. Firebase ist ein Dienst von Google. Solltest du diese Seite irgendwann nicht mehr nutzen wollen, kontaktiere einen Developer und er wird deinen Datensatz aus der Datenbank entfernen. Zur Authentifizierung nutzen wir Telegram, dort speichern wir deine TelegramID, deinen Usernamen, sowie die URL für dein Profilbild. Solltest du die Anweisung geben deine Telegramdaten zu löschen, sehen wir uns nach aktuellem Stand gezwungen deinen kompletten Datensatz zu löschen, da wir dich sonst nicht identifizieren können.'
         }
       }
     };

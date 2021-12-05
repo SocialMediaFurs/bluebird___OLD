@@ -21,12 +21,6 @@
             <router-link :to="{ name: 'Home'}">Home <i class="pi pi-home"></i></router-link>
             <router-link :to="{ name: 'Profile'}">Profile <i class="pi pi-users"></i></router-link>
             <router-link :to="{ name: 'About'}">About <i class="pi pi-info-circle"></i></router-link>
-            <!-- Redirect mode -->
-            <vue-telegram-login
-              mode="redirect"
-              telegram-login="YourTelegramBot"
-              redirect-url="https://your-website.io" />
-
             <VueScriptComponent script='<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="bluebird_login_bot" data-size="large" data-auth-url="https://bluebird-projekt.web.app/"></script>'></VueScriptComponent>
 
           </div>
@@ -65,12 +59,10 @@
 
 <script>
 import VueScriptComponent from 'vue-script-component'
-import {vueTelegramLogin} from 'vue-telegram-login'
 
 export default {
   components: {
     VueScriptComponent,
-    vueTelegramLogin
   },
   data: function () {
     return {
@@ -97,16 +89,12 @@ export default {
     }
   },
   methods: {
-    setUser(user) {
-      this.$store.commit("setCurrentUser", user.id)
-    },
     telegramAuth() {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams !== null) {
         this.tgUser.id = urlParams.get("id");
         this.tgUser.username = urlParams.get("username");
         this.tgUser.photoURL = urlParams.get("photo_url");
-        //this.$store.commit("setCurrentUser", this.tgUser)
         if (this.tgUser.id === "322709618") {
           this.$store.commit("setIsAdmin", true)
         }
@@ -118,17 +106,30 @@ export default {
     closeNaviagation() {
       this.showNavbar = false;
     },
-    yourCallbackFunction (user) {
-      // gets user as an input
-      // id, first_name, last_name, username,
-      // photo_url, auth_date and hash
-      console.log(user)
+    generateToken (length) {
+      let radom13chars = function () {
+        return Math.random().toString(16).substring(2, 15)
+      }
+      let loops = Math.ceil(length / 13)
+      return new Array(loops).fill(radom13chars).reduce((string, func) => {
+        return string + func()
+      }, '').substring(0, length)
+    },
+    random (length) {
+      if (localStorage.getItem("token") === null) {
+        console.log("if")
+        localStorage.setItem("token", this.generateToken(length));
+      }
+      this.$store.commit("setToken", localStorage.getItem("token"));
     }
   },
   created() {
     this.telegramAuth()
-    //this.setUser(this.$route.params.user)
-    console.log(this.$route.params.user)
+    if (this.$store.getters.getCurrentUser === null) {
+      this.$store.commit("setCurrentUser", this.$route.params.user);
+    }
+    console.log(this.$store.getters.getCurrentUser)
+    this.random(20)
   },
   updated() {
     this.telegramAuth()

@@ -1,5 +1,5 @@
 <template>
-  <h1>Normal</h1>
+  <h1>Test</h1>
   <a class="itemTitle" :href="val.link" target="_blank">
     <div class="flip-card-container">
       <div class="flip-card">
