@@ -1,12 +1,15 @@
 import { createStore } from 'vuex';
 import {db} from '@/firebase/firebase'
 
+import {adminModule} from "./admin";
+import {loggedinUserModule} from "./logedin";
+
 export default createStore({
   state: {
     currentUser: null,
     currentProfil: null,
-    allKinks: [],
-    isAdmin: false,
+    token: null,
+    settings: {},
   },
   mutations: {
     setCurrentUser(state, payload) {
@@ -15,12 +18,13 @@ export default createStore({
     setCurrentProfil(state, payload) {
       state.currentUser = payload;
     },
-    setAllKinks(state, payload) {
-      state.allKinks = payload;
+    setSettings(state, payload) {
+      state.settings = payload;
     },
-    setIsAdmin(state, payload) {
-      state.isAdmin = payload;
-    }
+    setToken(state, payload) {
+      state.token = payload;
+      this.dispatch("setSettings");
+    },
   },
   actions: {
     async setProfil(state) {
@@ -30,20 +34,27 @@ export default createStore({
         state.commit("setCurrentProfil", data)
       })
     },
-    async setKinkList(state) {
-      await db.collection('List').doc('kinks').get().then(snapshot => {
-        const data = snapshot.data();
-        console.table(data.allKinks)
-        state.commit("setAllKinks", data.allKinks)
-      })
+    setSettings(state) {
+      const tokenRef = db.collection('Token').doc(this.state.token);
+
+      tokenRef.get()
+        .then((docSnapshot) => {
+          if (docSnapshot.exists) {
+            tokenRef.onSnapshot((doc) => {
+              state.commit("setSettings", doc.data())
+            })
+          }
+        })
     },
   },
   modules: {
+    admin: adminModule,
+    loggedinUser: loggedinUserModule
   },
   getters: {
     getCurrentUser: state => state.currentUser,
     getCurrentProfil: state => state.currentProfil,
-    getAllKinks: state => state.allKinks,
-    getIsAdmin: state => state.isAdmin,
+    getToken: state => state.token,
+    getSettings: state => state.settings,
   }
 });

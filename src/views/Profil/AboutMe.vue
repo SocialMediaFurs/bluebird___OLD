@@ -24,8 +24,6 @@ export default {
   created() {
     data.forEach(element => {
       if(this.$route.params.user.toLowerCase() === element.Name) {
-        this.$store.commit("setCurrentUser", element.Name)
-        this.$store.dispatch("setAllGames");
         this.profileObj = element.ProfilePage;
       }
     })

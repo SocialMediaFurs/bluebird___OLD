@@ -18,8 +18,8 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/Link.vue'
-import TitlepageItem from '../../components/TitlepageItem.vue';
-import Profil from "../../components/General";
+import TitlepageItem from '../../../components/TitlepageItem.vue';
+import Profil from "../../../components/General";
 
 export default {
   name: 'Home',

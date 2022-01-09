@@ -11,8 +11,8 @@
         Du willst wissen wer wir sind? Das freut uns natürlich sehr zu hören, so können wir dich direkt mit unserer Seite besser vertraut machen.
       </p>
       <div class="flex justify-around mt-14">
-        <ProfilCard :val="devs.akuma"></ProfilCard>
-        <ProfilCard :val="devs.urastor"></ProfilCard>
+        <ProfilCard :val="devs.akuma" @click="setUser(devs.akuma)"></ProfilCard>
+        <ProfilCard :val="devs.urastor" @click="setUser(devs.urastor)"></ProfilCard>
       </div>
     </div>
   </div>
@@ -29,17 +29,24 @@ export default {
       devs: {
         akuma: {
           name: 'Akuma',
+          id: 'akuma',
           img: 'akuma.jpg',
-          link: '/akuma/aboutme'
+          link: '/profil/akuma/aboutme'
         },
         urastor: {
           name: 'Urastor',
+          id: 'akuma',
           img: 'urastor.png',
-          link: '/akuma/aboutme'
+          link: '/profil/akuma/aboutme'
         }
       },
     };
   },
+  methods: {
+    setUser(user) {
+      this.$store.commit("setCurrentUser", user.id)
+    }
+  }
 };
 </script>
 <style scoped lang="scss">

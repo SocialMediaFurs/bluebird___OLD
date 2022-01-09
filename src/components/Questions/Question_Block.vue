@@ -1,9 +1,5 @@
 <template>
-  <div class="contentbox questions">
-    <div v-for="(val, key) in allQuestions" :key="key">
-      <Questions :question="val" :last="key !== Object.keys(allQuestions).length" />
-    </div>
-  </div>
+  <Questions v-for="(val, key) in allQuestions" :key="key" :question="val" class="contentbox questions"/>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <span class="item">
+    <span class="item" v-if="teaser.headline !== ''">
       <img src="../assets/icons/Question.svg" alt="Question.svg" height="20" width="20">
       <h3 class="itemTitle">{{ teaser.headline }}</h3>
     </span>
@@ -33,10 +33,6 @@ p {
   width: 48%;
   margin-bottom: 5px;
   background-color: $brand;
-}
-img {
-  margin-top: 6px;
-  height: 20px;
 }
 h3 {
   font-size: 24px;

@@ -2,11 +2,7 @@
   <div class="about">
     <h1>NSFW Bereich - Fetisch Liste</h1>
 
-    <div class="contentbox questions">
-      <div v-for="(val, key) in profileObj.questions" :key="key">
-        <Questions :val="val" :last="key !== Object.keys(profileObj).length" />
-      </div>
-    </div>
+    <Question_Block :all-questions="profileObj.questions" />
 
     <div class="allKinks">
       <span v-for="(val, key) in profileObj.kinks" :key="key">
@@ -17,13 +13,13 @@
   </div>
 </template>
 <script>
-import Questions from '../../components/Questions/Questions.vue';
+import Question_Block from '../../components/Questions/Question_Block.vue';
 import Kink from '../../components/Kink.vue';
 
 export default {
   components: {
     Kink,
-    Questions
+    Question_Block
   },
   data: function () {
     return {
