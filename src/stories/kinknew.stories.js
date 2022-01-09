@@ -1,4 +1,4 @@
-import Link from "../components/LinkTest";
+import Link from "../components/KinkNew";
 
 export default {
   /* 👇 The title prop is optional.
@@ -9,16 +9,33 @@ export default {
   component: Link,
 };
 
-const Template = (args) => <Link {...args} />;
+const Template = (args) => ({
+  components: { Link },
+  setup() {
+    return { args };
+  },
+  template: '<Link v-bind="args" />',
+});
 
 export const Primary = Template.bind({});
 Primary.args = {
+  singleDiagram: true,
+  slider: false,
   val:
     {
-      link: "https://twitter.com/SneakerMaster95",
-      img: "logos/twitter.png",
-      plattform: "Twitter",
-      financialInterest: false
+      field: "Sneaker",
+      orientation: 5,
+      like: 6,
+      pro: [
+        'lecken',
+        'sniffen',
+        'vollwixxen'
+      ],
+      con: [
+        'kaputt machen'
+      ],
+      disable: true,
+      experience: true
     }
 };
 Primary.storyName = 'Back Card ändern';

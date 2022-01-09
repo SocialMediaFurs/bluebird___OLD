@@ -1,9 +1,10 @@
 <template>
   <div id="wrapper">
-    <div>
-      <h3 style="text-align: left" @click="display=!display">{{ val.field }}</h3>
+    <span v-if="!displayExplain && !displayDetails">
+      <div>
+      <h3 style="text-align: left" @click="displayExplain=!displayExplain">{{ val.field }}</h3>
     </div>
-    <div style="padding: 0 20px">
+      <div style="padding: 0 20px">
       <div>
         <Slider
           v-model="orientation"
@@ -11,8 +12,7 @@
           :min="0"
           :max="10"
           :disabled="val.disable"
-          class="slider"
-          id="orientation"
+          class="slider orientation"
         />
       </div>
       <div style="display: flex">
@@ -27,8 +27,7 @@
           :min="0"
           :max="4"
           :disabled="val.disable"
-          class="slider"
-          id="fetish"
+          class="slider fetish"
         />
       </div>
       <div style="display: flex">
@@ -37,6 +36,79 @@
         <div style="width: 33%; text-align: right">Liebe ich</div>
       </div>
     </div>
+    </span>
+    <span v-if="!displayExplain && displayDetails">
+      <div>
+        <h3 style="text-align: left" @click="displayExplain=!displayExplain">{{ val.field }}</h3>
+      </div>
+      <div class="flex">
+        <div class="w-16 -my-2" >
+          <Slider
+            v-model="orientation"
+            :step="1"
+            :min="0"
+            :max="10"
+            :disabled="val.disable"
+            class="slider orientation my-2"
+          />
+          <Slider
+            v-model="like"
+            :step="1"
+            :min="0"
+            :max="4"
+            :disabled="val.disable"
+            class="slider fetish my-2"
+          />
+        </div>
+        <div class="">
+          <div class="box box-green">
+            <p>Grün</p>
+          </div>
+          <div class="box box-red">
+            <p>Rot</p>
+          </div>
+          <div class="box box-yellow">
+            <p>Gelb</p>
+          </div>
+        </div>
+      </div>
+    </span>
+    <span v-if="displayExplain && !displayDetails">
+      <div>
+        <h3 style="text-align: left" @click="displayExplain=!displayExplain">{{ val.field }}</h3>
+      </div>
+      <div class="flex">
+        <div class="w-16 -my-2" >
+          <Slider
+            v-model="orientation"
+            :step="1"
+            :min="0"
+            :max="10"
+            :disabled="val.disable"
+            class="slider orientation my-2"
+          />
+          <Slider
+            v-model="like"
+            :step="1"
+            :min="0"
+            :max="4"
+            :disabled="val.disable"
+            class="slider fetish my-2"
+          />
+        </div>
+        <div class="">
+          <div class="box box-green">
+            <p>Grün</p>
+          </div>
+          <div class="box box-red">
+            <p>Rot</p>
+          </div>
+          <div class="box box-yellow">
+            <p>Gelb</p>
+          </div>
+        </div>
+      </div>
+    </span>
   </div>
 </template>
 
@@ -50,7 +122,8 @@ export default {
     return {
       orientation: this.val.orientation,
       like: this.val.like,
-      display: false,
+      displayExplain: false,
+      displayDetails: true,
     };
   },
   computed: {
@@ -80,7 +153,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-::v-deep(#orientation) {
+.box {
+  width: 150px;
+  height: 35px;
+  margin: 0 0 0 10px;
+
+  &-green {
+    background-color: #4caf5080;
+    margin: 0 0 10px 10px;
+  }
+
+  &-red {
+    background-color: #EF535080;
+    margin: 10px 0 10px 10px;
+  }
+
+  &-yellow {
+    background-color: #BFA41880;
+  }
+}
+::v-deep(.orientation) {
   .p-slider-range {
     background-color: transparent;
   }
@@ -109,7 +201,7 @@ export default {
     width: 100%;
   }
 }
-::v-deep(#fetish) {
+::v-deep(.fetish) {
   .p-slider-range {
     background-color: transparent;
   }
@@ -144,7 +236,7 @@ export default {
   margin: 15px auto;
   background-color: #547EBD;
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
 }
 * {
   font-size: 10px;

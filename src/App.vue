@@ -4,6 +4,11 @@
 
 <style lang="scss">
 @import "./assets/variables/variables";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
 
 .navbar {
   width: 100%;

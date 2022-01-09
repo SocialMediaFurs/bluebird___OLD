@@ -1,50 +1,60 @@
 <template>
   <div id="wrapper">
     <div>
-      <h3 style="text-align: left" @click="display=!display">{{ val.field }}</h3>
+      <h3 class="text-left click-head" @click="display=!display">{{ val.field }}</h3>
     </div>
-    <div style="padding: 0 20px">
+    <div class="px-4 py-4" v-if="singleDiagram">
       <div>
-        <Slider
-          v-model="orientation"
-          :step="1"
-          :min="0"
-          :max="10"
-          :disabled="val.disable"
-          class="slider"
-          id="orientation"
-        />
-      </div>
-      <div style="display: flex">
-        <div style="width: 33%; text-align: left">Dominant</div>
-        <div style="width: 33%;"></div>
-        <div style="width: 33%; text-align: right">Devot</div>
-      </div>
-      <div style="margin-top: 10px">
-        <Slider
-          v-model="like"
-          :step="1"
-          :min="0"
-          :max="4"
-          :disabled="val.disable"
-          class="slider"
-          id="fetish"
-        />
-      </div>
-      <div style="display: flex">
-        <div style="width: 33%; text-align: left">Tabu</div>
-        <div style="width: 33%;"></div>
-        <div style="width: 33%; text-align: right">Liebe ich</div>
+        <div>
+          <Slider
+            v-model="orientation"
+            :step="1"
+            :min="0"
+            :max="10"
+            :disabled="val.disable"
+            class="slider"
+            id="orientation"
+          />
+        </div>
+        <div class="flex">
+          <div class="w-1/3 text-left">Dominant</div>
+          <div class="w-1/3"></div>
+          <div class="w-1/3 text-right">Devot</div>
+        </div>
+        <div class="mt-3">
+          <Slider
+            v-model="like"
+            :step="1"
+            :min="0"
+            :max="4"
+            :disabled="val.disable"
+            class="slider"
+            id="fetish"
+          />
+        </div>
+        <div class="flex">
+          <div class="w-1/3 text-left">Tabu</div>
+          <div class="w-1/3"></div>
+          <div class="w-1/3 text-right">Liebe ich</div>
+        </div>
       </div>
     </div>
+    <Button label="Erfahre mehr" class="btn btn-kink" />
   </div>
 </template>
 
 <script>
+import Button from 'primevue/button';
+
 export default {
   name: 'Kink',
+  components: {
+    Button
+  },
   props: {
     val: Object,
+    singleDiagram: Boolean,
+    showBtn: Boolean,
   },
   data: function () {
     return {
@@ -149,6 +159,27 @@ export default {
 * {
   font-size: 10px;
   font-family: Roboto;
+}
+.click-head:hover {
+  cursor: pointer;
+}
+.btn {
+  background-color: #ffaa1d;
+  border: 1px solid #ffffff;
+  color: #3362a9;
+  font-size: 13px;
+  padding: 2px 15px;
+
+  &:hover {
+    background-color: #ee9e1b;
+    border: 1px solid #ffffff;
+    color: #3362a9;
+  }
+
+  &-kink {
+    margin: auto;
+    display: block;
+  }
 }
 h3 {
   margin-top: 0;

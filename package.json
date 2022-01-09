@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@storybook/preset-scss": "^1.0.3",
+    "chart.js": "^3.6.2",
     "core-js": "^3.8.0",
     "document-ready": "^2.0.2",
     "firebase": "^8.10.0",

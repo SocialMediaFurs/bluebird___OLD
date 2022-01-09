@@ -1,5 +1,4 @@
 <template>
-  <h1>Normal</h1>
   <a class="itemTitle" :href="val.link" target="_blank">
     <div class="flip-card-container">
       <div class="flip-card">
@@ -73,7 +72,6 @@ export default {
 
     img {
       border-radius: 20px;
-      width: 200px;
     }
 
     &-back {
