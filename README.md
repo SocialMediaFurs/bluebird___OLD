@@ -44,10 +44,10 @@ npm run lint
 <img src="https://www.primefaces.org/primevue/demo/images/primevue-logo-dark.svg">
 </a>
 <a href="https://vuex.vuejs.org/">
-<h2 style="color: #3EAF7C">Vuex</h2>
+<p style="color: #3EAF7C">Vuex</p>
 </a>
 <a href="https://router.vuejs.org/">
-<h2 style="color: #3EAF7C">Vue Router</h2>
+<p style="color: #3EAF7C">Vue Router</p>
 </a>
 
 
