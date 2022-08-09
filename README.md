@@ -1,6 +1,8 @@
 # Project BlueBird
-##Projekt Beschreibung
-Für dieses Projekt entsteht eine Webseite, auf welcher es möglich ist sich in verschiedenen Kategorien vorzustellen und einen Überblick zu bieten.
+## Project description
+For this project a web page is created, on which it is possible to introduce oneself in different categories and to offer an overview.
+<details>
+<summary><h2>✍ Start the Project</h2></summary>
 
 ## Projekt setup
 
@@ -26,16 +28,26 @@ npm run build
 npm run lint
 ```
 
+</details>
+
 ### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[![VueJs](https://skillicons.dev/icons?i=vuejs)](https://cli.vuejs.org/config/)
+
+
+### 🏗️ Design Template
+[![Figma](https://skillicons.dev/icons?i=figma)](https://www.figma.com/file/8GZEj0R5tD0SFQA6TrVvy5/Startseite?node-id=1235%3A805)
 
 ## Plugins
 
-[PrimeVue](https://primefaces.org/primevue/showcase/#/colors)
-
-[Vuex](https://vuex.vuejs.org/)
-
-[VueRouter](https://router.vuejs.org/)
+<a href="https://primefaces.org/primevue/showcase/#/colors">
+<img src="https://www.primefaces.org/primevue/demo/images/primevue-logo-dark.svg">
+</a>
+<a href="https://vuex.vuejs.org/">
+<h2 style="color: #3EAF7C">Vuex</h2>
+</a>
+<a href="https://router.vuejs.org/">
+<h2 style="color: #3EAF7C">Vue Router</h2>
+</a>
 
 
