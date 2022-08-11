@@ -16,7 +16,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "docker-build": "docker run smf/bluebird:0.0.1",
+    "docker-run": "docker run -p 8080:8080 -it smf/bluebird:0.0.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
